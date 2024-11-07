@@ -8,12 +8,14 @@ from hsbc import create_hsbc_tab
 #from lloyds import create_lloyds_tab
 #from natwest import create_natwest_tab
 #from standardchartered import create_stanchart_tab
+
 # Create a Dash application
 app = dash.Dash(__name__)
+
 app.layout = html.Div([
     # Title with darker blue background and white text
     html.Div(
-        children="FTSE 100 Bank Listings",
+        children="FTSE 100 Listed Banks Close Price Predictions Dashboard",
         style={
             'backgroundColor': '#001f3f',  # Darker blue background
             'color': 'white',              # White text color

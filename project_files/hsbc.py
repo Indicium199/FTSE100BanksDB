@@ -3,8 +3,16 @@ import dash
 from dash import html
 from data import fetch_latest_close_price
 
-# Fetch the latest close price for HSBC
-latest_close_price = fetch_latest_close_price('HSBA.L') 
+latest_date, latest_close_price = fetch_latest_close_price("HSBC")
+
+# Format and display the output
+if latest_close_price is not None:
+    print(f"Date: {latest_date}, Close Price: ${latest_close_price:.2f}")
+else:
+    print("No data available for the specified date range.")
+
+
+
 def create_hsbc_tab():
     return html.Div([
         # Container for the two main sections
@@ -40,7 +48,8 @@ def create_hsbc_tab():
                             'margin': '0',
                             'textAlign': 'center',
                         }),
-                        html.P("Date: YYYY-MM-DD", style={
+                        html.P(f"Date: {latest_date}" if latest_date is not None else "Date: N/A",
+                        style={
                             'font-size': '12px',
                             'color': '#000000',  # Black text
                             'margin': '5px 0',
